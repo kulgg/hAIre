@@ -3,5 +3,10 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="hAIre!" theme="cupcake" stakeholder="">
-	<main></main>
+	<main class="flex flex-col mt-20 items-center">
+		<div class="grid grid-cols-2 gap-10">
+			<a href="/staff" class="btn btn-primary">Staff</a>
+			<a href="/applicant" class="btn btn-secondary">Applicant</a>
+		</div>
+	</main>
 </Layout>
