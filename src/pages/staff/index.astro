@@ -1,18 +1,11 @@
 ---
 import applications from "../../data/applications";
 import StaffLayout from "../../layouts/StaffLayout.astro";
-function sortByKey(array: [], key) {
-	return array.sort(function (a, b) {
-		var x = a[key];
-		var y = b[key];
-		return x < y ? -1 : x > y ? 1 : 0;
-	});
-}
 ---
 
 <StaffLayout>
 	<main>
-		<div class="grid grid-cols-1 place-items-center gap-2">
+		<div class="grid grid-cols-1 md:grid-cols-2 place-items-center gap-2">
 			{
 				applications
 					.sort((a, b) => a.positionId.localeCompare(b.positionId))
