@@ -1,11 +1,54 @@
 ---
+import applications, { Application } from "../../../data/applications";
 import AuthedLayout from "../../../layouts/AuthedLayout.astro";
 
 const { id } = Astro.params;
+
+export interface Props {
+	application: Application;
+}
+
+const { application } = Astro.props;
+
+export async function getStaticPaths() {
+	return applications.map((application) => ({
+		params: { id: application.id },
+		props: { application },
+	}));
+}
 ---
 
 <AuthedLayout stakeholder="Staff">
-	<h2>#{id}</h2>
-	<progress class="progress progress-primary w-1/2" value="70" max="100"
-	></progress>
+	<div class="mx-10">
+		<h2 class="text-xl mt-5 text-primary">Application #{id}</h2>
+		<div class="flex flex-col w-full py-4">
+			<div class="text-lg">Grammar and spelling</div>
+			<div class="flex items-center gap-5">
+				<progress
+					class={`progress ${
+						application.data.grammarScore < 60
+							? "progress-warning"
+							: "progress-success"
+					}`}
+					value={application.data.grammarScore}
+					max="100"></progress>
+				<div>{application.data.grammarScore}%</div>
+			</div>
+			<div class="divider"></div>
+			<div><h2 class="text-lg">Content</h2></div>
+			<div class="divider"></div>
+			<div class="card w-96 bg-base-100 self-center shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Likely a good hire</h2>
+					<span class="">70% overall applicant score</span>
+					<progress class="progress progress-info w-full" value="70" max="100"
+					></progress>
+					<div class="card-actions justify-between px-10 mt-5">
+						<button class="btn btn-success">Accept</button>
+						<button class="btn">Reject</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </AuthedLayout>
