@@ -1,0 +1,9 @@
+---
+import AuthedLayout from "../../../layouts/AuthedLayout.astro";
+
+const { id } = Astro.params;
+---
+
+<AuthedLayout stakeholder="Staff">
+	<p>Post: {id}</p>
+</AuthedLayout>

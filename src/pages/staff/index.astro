@@ -1,7 +1,42 @@
 ---
-import AuthedLayout from "../../layouts/AuthedLayout.astro";
+import applications from "../../data/applications";
+import StaffLayout from "../../layouts/StaffLayout.astro";
+function sortByKey(array: [], key) {
+	return array.sort(function (a, b) {
+		var x = a[key];
+		var y = b[key];
+		return x < y ? -1 : x > y ? 1 : 0;
+	});
+}
 ---
 
-<AuthedLayout title="hAIre!" stakeholder="Staff">
-	<main></main>
-</AuthedLayout>
+<StaffLayout>
+	<main>
+		<div class="grid grid-cols-1 place-items-center gap-2">
+			{
+				applications
+					.sort((a, b) => a.positionId.localeCompare(b.positionId))
+					.map((x) => {
+						return (
+							<div class="card w-96 bg-base-100 shadow-xl">
+								<div class="card-body">
+									<h2 class="card-title">
+										{x.position} (#{x.positionId})
+									</h2>
+									<p>Application #{x.id}</p>
+									<div class="card-actions justify-end">
+										<a
+											class="btn btn-primary"
+											href={`/staff/application/${x.id}`}
+										>
+											Review
+										</a>
+									</div>
+								</div>
+							</div>
+						);
+					})
+			}
+		</div>
+	</main>
+</StaffLayout>

@@ -3,13 +3,13 @@ import Layout from "./Layout.astro";
 import MenuItems from "./MenuItems.astro";
 
 export interface Props {
-	title: string;
 	stakeholder: string;
 }
 
-const { title, stakeholder } = Astro.props;
+const { stakeholder } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout>
 	<MenuItems stakeholder={stakeholder} slot="menu-items" />
+	<slot />
 </Layout>
