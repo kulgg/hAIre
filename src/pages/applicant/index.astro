@@ -3,5 +3,83 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 ---
 
 <ApplicantLayout>
-	<main></main>
+	<main class="mx-5 my-3">
+		<h2 class="text-xl underline">Application #1282</h2>
+		<div class="flex items-center gap-10 justify-center">
+			<div class="card my-3 w-full bg-base-100 shadow-xl image-full">
+				<figure>
+					<img src="/arch.jpeg" alt="Arch" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title text-3xl">No Worries!</h2>
+					<p class="text-xl text-center mt-10">
+						Success is not final, failure is not fatal; it is the courage to
+						continue that counts.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="text-lg">
+			<span class="underline my-2 font-semibold">Successful applicants</span> for
+			the position you applied for, share the following <span
+				class="font-semibold underline">characteristics</span
+			>
+		</div>
+		<div class="bg-white shadow-xl px-2 py-2">
+			<div class="flex my-4 flex-col w-full">
+				<h3 class="text-primary font-semibold">Skills</h3>
+				<ul class="px-3"><li>- C#</li><li>- relational databases</li></ul>
+				<div class="grid py-3 grid-cols-1">
+					<div>
+						<h4 class="text-primary font-semibold">Highest Education</h4>
+						<figure class="pie-chart">
+							<figcaption>
+								M.Sc. CS 38<span style="color:#4e79a7"></span><br />
+								B.Sc. CS 23<span style="color:#f28e2c"></span><br />
+								Highschool Degree 3<span style="color:#e15759"></span>
+							</figcaption>
+						</figure>
+					</div>
+					<h4 class="text-primary font-semibold">Years Of Experience</h4>
+					<h4 class="text-primary font-semibold">Prior position</h4>
+				</div>
+			</div>
+		</div>
+	</main>
 </ApplicantLayout>
+
+<style>
+	.pie-chart {
+		background: radial-gradient(circle closest-side, transparent 91%, white 0),
+			conic-gradient(
+				#4e79a7 0,
+				#4e79a7 59.4%,
+				#f28e2c 0,
+				#f28e2c 95.3%,
+				#e15759 0,
+				#e15759 100%
+			);
+		position: relative;
+		width: 500px;
+		min-height: 350px;
+		margin: 0;
+		outline: 1px solid #ccc;
+	}
+	.pie-chart figcaption {
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+		font-size: smaller;
+		text-align: right;
+	}
+	.pie-chart span:after {
+		display: inline-block;
+		content: "";
+		width: 0.8em;
+		height: 0.8em;
+		margin-left: 0.4em;
+		height: 0.8em;
+		border-radius: 0.2em;
+		background: currentColor;
+	}
+</style>
