@@ -1,6 +1,9 @@
 ---
 import SentenceList from "../../../components/SentenceList.astro";
-import applications, { Application } from "../../../data/applications";
+import applications, {
+	Application,
+	ScoredSentence,
+} from "../../../data/applications";
 import AuthedLayout from "../../../layouts/AuthedLayout.astro";
 
 const { id } = Astro.params;
@@ -23,28 +26,47 @@ const grammarScorePercentage = grammarScore * 100;
 
 const { skills, education, pastWork } = application.data.content;
 
-console.log(skills);
-console.log(education);
-console.log(pastWork);
+const accumulatorFunction = (
+	acc: number,
+	curr: ScoredSentence,
+	negative: boolean
+): number => {
+	return acc + (negative ? 0.5 - curr.score : 0.5 + curr.score);
+};
 
 const totalScore =
 	(grammarScore +
-		skills.sentences.reduce(
-			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+		skills.positiveSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, false),
 			0
 		) +
-		education.sentences.reduce(
-			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+		skills.negativeSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, true),
 			0
 		) +
-		pastWork.sentences.reduce(
-			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+		education.positiveSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, false),
+			0
+		) +
+		education.negativeSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, true),
+			0
+		) +
+		pastWork.positiveSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, false),
+			0
+		) +
+		pastWork.negativeSentences.reduce(
+			(acc, curr) => accumulatorFunction(acc, curr, true),
 			0
 		)) /
 	(1 +
-		skills.sentences.length +
-		education.sentences.length +
-		pastWork.sentences.length);
+		skills.positiveSentences.length +
+		skills.negativeSentences.length +
+		education.positiveSentences.length +
+		education.negativeSentences.length +
+		pastWork.positiveSentences.length +
+		pastWork.negativeSentences.length);
 
 const totalScorePercentage = totalScore * 100;
 ---
@@ -68,9 +90,9 @@ const totalScorePercentage = totalScore * 100;
 			<div class="divider"></div>
 			<div>
 				<h2 class="text-xl">Content</h2>
-				<SentenceList sentences={skills.sentences} title="Skills" />
-				<SentenceList sentences={education.sentences} title="Education" />
-				<SentenceList sentences={pastWork.sentences} title="Past Work" />
+				<SentenceList sentences={skills} title="Skills" />
+				<SentenceList sentences={education} title="Education" />
+				<SentenceList sentences={pastWork} title="Past Work" />
 			</div>
 			<div class="divider"></div>
 			<div class="card w-full bg-base-100 self-center shadow-xl">

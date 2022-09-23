@@ -3,7 +3,10 @@ import type { ScoredSentence } from "../data/applications";
 
 export interface Props {
 	title: string;
-	sentences: ScoredSentence[];
+	sentences: {
+		positiveSentences: ScoredSentence[];
+		negativeSentences: ScoredSentence[];
+	};
 }
 
 const { title, sentences } = Astro.props;
@@ -13,16 +16,28 @@ const { title, sentences } = Astro.props;
 
 <ul class="gap-1 grid grid-cols-2">
 	{
-		sentences.map((x) => (
-			<li class={`flex justify-start items-center gap-1 text-sm`}>
-				<div class="text-base">
-					{x.missing ? "Missing: " : ""}
-					{x.text}
-				</div>
+		sentences.positiveSentences.map((x) => (
+			<li
+				class={`flex justify-start items-center gap-1 text-sm col-start-1 col-span-1`}
+			>
+				<div class="text-base">{x.text}</div>
 				<div
-					class={`scale-75 radial-progress ${
-						x.missing ? "text-error" : "text-success"
-					}`}
+					class={`scale-75 radial-progress`}
+					style={`--value:${x.score * 2 * 100};`}
+				>
+					{x.score * 2 * 100}%
+				</div>
+			</li>
+		))
+	}
+	{
+		sentences.negativeSentences.map((x) => (
+			<li
+				class={`flex justify-start items-center gap-1 text-sm col-start-2 col-span-1`}
+			>
+				<div class="text-base">{x.text}</div>
+				<div
+					class={`scale-75 radial-progress`}
 					style={`--value:${x.score * 2 * 100};`}
 				>
 					{x.score * 2 * 100}%

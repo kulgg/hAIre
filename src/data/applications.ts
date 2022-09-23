@@ -1,7 +1,6 @@
 export interface ScoredSentence {
 	text: string;
 	score: number;
-	missing: boolean;
 }
 
 export interface Application {
@@ -12,13 +11,16 @@ export interface Application {
 		grammarScore: number;
 		content: {
 			skills: {
-				sentences: ScoredSentence[];
+				positiveSentences: ScoredSentence[];
+				negativeSentences: ScoredSentence[];
 			};
 			education: {
-				sentences: ScoredSentence[];
+				positiveSentences: ScoredSentence[];
+				negativeSentences: ScoredSentence[];
 			};
 			pastWork: {
-				sentences: ScoredSentence[];
+				positiveSentences: ScoredSentence[];
+				negativeSentences: ScoredSentence[];
 			};
 		};
 	};
@@ -33,246 +35,40 @@ const applications: Application[] = [
 			grammarScore: 0.8,
 			content: {
 				skills: {
-					sentences: [
+					positiveSentences: [
 						{
 							text: "five years of experience with Javascript",
 							score: 0.4,
-							missing: false,
+						},
+					],
+					negativeSentences: [
+						{
+							text: "Missing: Docker",
+							score: 0.3,
 						},
 						{
-							text: "Docker",
-							score: 0.3,
-							missing: true,
+							text: "Missing: TypeScript",
+							score: 0.4,
 						},
 					],
 				},
 				education: {
-					sentences: [
+					positiveSentences: [
 						{
 							text: "studied computer science at MIT",
 							score: 0.4,
-							missing: false,
 						},
 					],
+					negativeSentences: [],
 				},
 				pastWork: {
-					sentences: [
+					positiveSentences: [
 						{
 							text: "built software that crawls job posting sites",
 							score: 0.3,
-							missing: false,
 						},
 					],
-				},
-			},
-		},
-	},
-	{
-		id: "3712",
-		position: "Junior Software Engineer",
-		positionId: "23",
-		data: {
-			grammarScore: 0.8,
-			content: {
-				skills: {
-					sentences: [
-						{
-							text: "five years of experience with Javascript",
-							score: 0.8,
-							missing: false,
-						},
-						{
-							text: "Docker",
-							score: 0.6,
-							missing: true,
-						},
-					],
-				},
-				education: {
-					sentences: [
-						{
-							text: "studied computer science at MIT",
-							score: 0.9,
-							missing: false,
-						},
-					],
-				},
-				pastWork: {
-					sentences: [
-						{
-							text: "built software that crawls job posting sites",
-							score: 0.6,
-							missing: false,
-						},
-					],
-				},
-			},
-		},
-	},
-	{
-		id: "8212",
-		position: "Human Resources",
-		positionId: "22",
-		data: {
-			grammarScore: 0.8,
-			content: {
-				skills: {
-					sentences: [
-						{
-							text: "five years of experience with Javascript",
-							score: 0.8,
-							missing: false,
-						},
-						{
-							text: "Docker",
-							score: 0.6,
-							missing: true,
-						},
-					],
-				},
-				education: {
-					sentences: [
-						{
-							text: "studied computer science at MIT",
-							score: 0.9,
-							missing: false,
-						},
-					],
-				},
-				pastWork: {
-					sentences: [
-						{
-							text: "built software that crawls job posting sites",
-							score: 0.6,
-							missing: false,
-						},
-					],
-				},
-			},
-		},
-	},
-	{
-		id: "7412",
-		position: "Machine Learning Engineer",
-		positionId: "31",
-		data: {
-			grammarScore: 0.8,
-			content: {
-				skills: {
-					sentences: [
-						{
-							text: "five years of experience with Javascript",
-							score: 0.8,
-							missing: false,
-						},
-						{
-							text: "Docker",
-							score: 0.6,
-							missing: true,
-						},
-					],
-				},
-				education: {
-					sentences: [
-						{
-							text: "studied computer science at MIT",
-							score: 0.9,
-							missing: false,
-						},
-					],
-				},
-				pastWork: {
-					sentences: [
-						{
-							text: "built software that crawls job posting sites",
-							score: 0.6,
-							missing: false,
-						},
-					],
-				},
-			},
-		},
-	},
-	{
-		id: "9289",
-		position: "Machine Learning Engineer",
-		positionId: "31",
-		data: {
-			grammarScore: 0.8,
-			content: {
-				skills: {
-					sentences: [
-						{
-							text: "five years of experience with Javascript",
-							score: 0.8,
-							missing: false,
-						},
-						{
-							text: "Docker",
-							score: 0.6,
-							missing: true,
-						},
-					],
-				},
-				education: {
-					sentences: [
-						{
-							text: "studied computer science at MIT",
-							score: 0.9,
-							missing: false,
-						},
-					],
-				},
-				pastWork: {
-					sentences: [
-						{
-							text: "built software that crawls job posting sites",
-							score: 0.6,
-							missing: false,
-						},
-					],
-				},
-			},
-		},
-	},
-	{
-		id: "3712",
-		position: "Senior Software Engineer",
-		positionId: "93",
-		data: {
-			grammarScore: 0.8,
-			content: {
-				skills: {
-					sentences: [
-						{
-							text: "five years of experience with Javascript",
-							score: 0.8,
-							missing: false,
-						},
-						{
-							text: "Docker",
-							score: 0.6,
-							missing: true,
-						},
-					],
-				},
-				education: {
-					sentences: [
-						{
-							text: "studied computer science at MIT",
-							score: 0.9,
-							missing: false,
-						},
-					],
-				},
-				pastWork: {
-					sentences: [
-						{
-							text: "built software that crawls job posting sites",
-							score: 0.6,
-							missing: false,
-						},
-					],
+					negativeSentences: [],
 				},
 			},
 		},
