@@ -1,0 +1,17 @@
+---
+export interface Props {
+	value: string;
+	label: string;
+	type: string;
+}
+
+const { value, label, type } = Astro.props;
+---
+
+<div>
+	<progress
+		class={`progress progress-${type} w-56 mr-2`}
+		value={value}
+		max="100"></progress>
+	<span class="text-sm">{label}</span>
+</div>
