@@ -1,0 +1,33 @@
+---
+import type { ScoredSentence } from "../data/applications";
+
+export interface Props {
+	title: string;
+	sentences: ScoredSentence[];
+}
+
+const { title, sentences } = Astro.props;
+---
+
+<div class="underline py-2">{title}</div>
+
+<ul class="gap-1 grid grid-cols-2">
+	{
+		sentences.map((x) => (
+			<li class={`flex justify-start items-center gap-1 text-sm`}>
+				<div class="text-base">
+					{x.missing ? "Missing: " : ""}
+					{x.text}
+				</div>
+				<div
+					class={`scale-75 radial-progress ${
+						x.missing ? "text-error" : "text-success"
+					}`}
+					style={`--value:${x.score * 2 * 100};`}
+				>
+					{x.score * 2 * 100}%
+				</div>
+			</li>
+		))
+	}
+</ul>

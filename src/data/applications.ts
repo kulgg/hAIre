@@ -36,12 +36,12 @@ const applications: Application[] = [
 					sentences: [
 						{
 							text: "five years of experience with Javascript",
-							score: 0.8,
+							score: 0.4,
 							missing: false,
 						},
 						{
 							text: "Docker",
-							score: 0.6,
+							score: 0.3,
 							missing: true,
 						},
 					],
@@ -50,7 +50,7 @@ const applications: Application[] = [
 					sentences: [
 						{
 							text: "studied computer science at MIT",
-							score: 0.9,
+							score: 0.4,
 							missing: false,
 						},
 					],
@@ -59,7 +59,7 @@ const applications: Application[] = [
 					sentences: [
 						{
 							text: "built software that crawls job posting sites",
-							score: 0.6,
+							score: 0.3,
 							missing: false,
 						},
 					],

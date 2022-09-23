@@ -1,4 +1,5 @@
 ---
+import SentenceList from "../../../components/SentenceList.astro";
 import applications, { Application } from "../../../data/applications";
 import AuthedLayout from "../../../layouts/AuthedLayout.astro";
 
@@ -52,7 +53,7 @@ const totalScorePercentage = totalScore * 100;
 	<div class="mx-10">
 		<h2 class="text-xl mt-5 text-primary">Application #{id}</h2>
 		<div class="flex flex-col w-full py-4">
-			<div class="text-lg">Grammar and spelling</div>
+			<div class="text-xl">Grammar and spelling</div>
 			<div class="flex items-center gap-5">
 				<progress
 					class={`progress ${
@@ -66,11 +67,13 @@ const totalScorePercentage = totalScore * 100;
 			</div>
 			<div class="divider"></div>
 			<div>
-				<h2 class="text-lg">Content</h2>
-				<div>Skills</div>
+				<h2 class="text-xl">Content</h2>
+				<SentenceList sentences={skills.sentences} title="Skills" />
+				<SentenceList sentences={education.sentences} title="Education" />
+				<SentenceList sentences={pastWork.sentences} title="Past Work" />
 			</div>
 			<div class="divider"></div>
-			<div class="card w-96 bg-base-100 self-center shadow-xl">
+			<div class="card w-full bg-base-100 self-center shadow-xl">
 				<div class="card-body">
 					<h2 class="card-title">Likely a good hire</h2>
 					<span class=""
@@ -80,7 +83,7 @@ const totalScorePercentage = totalScore * 100;
 						class="progress progress-info w-full"
 						value={totalScorePercentage}
 						max="100"></progress>
-					<div class="card-actions justify-between px-10 mt-5">
+					<div class="card-actions justify-center gap-24 px-10 mt-5">
 						<a class="btn btn-success" href="/staff/success">Accept</a>
 						<a class="btn" href="/staff/success">Reject</a>
 					</div>
