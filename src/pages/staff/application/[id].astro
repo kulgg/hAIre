@@ -172,11 +172,13 @@ if (totalScore >= 0.75) {
 					max="100"></progress>
 				<div class="card-actions justify-center gap-24 px-10 mt-5">
 					<a
-						class={`btn ${totalScore < 0.5 ? "btn-outline" : "btn-success"}`}
+						class={`btn text-white ${
+							totalScore < 0.5 ? "btn-outline" : "btn-primary"
+						}`}
 						href="/staff/success">Accept</a
 					>
 					<a
-						class={`btn ${totalScore < 0.5 ? "btn-success" : "btn-outline"}`}
+						class={`btn ${totalScore < 0.5 ? "btn-primary" : "btn-outline"}`}
 						href="/staff/success">Reject</a
 					>
 				</div>
