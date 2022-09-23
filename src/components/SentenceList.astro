@@ -13,14 +13,13 @@ const { title, sentences } = Astro.props;
 ---
 
 <div class="underline py-2">{title}</div>
-
 <ul class="gap-1 grid grid-cols-2">
 	{
 		sentences.positiveSentences.map((x) => (
 			<li
 				class={`flex justify-start items-center gap-1 text-sm col-start-1 col-span-1`}
 			>
-				<div class="text-base">{x.text}</div>
+				<div class="text-base">• {x.text}</div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -49,7 +48,7 @@ const { title, sentences } = Astro.props;
 			<li
 				class={`flex justify-start items-center gap-1 text-sm col-start-2 col-span-1`}
 			>
-				<div class="text-base">{x.text}</div>
+				<div class="text-base">• {x.text}</div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
