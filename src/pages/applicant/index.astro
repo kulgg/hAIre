@@ -5,7 +5,7 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 
 <ApplicantLayout>
 	<main class="mx-5 my-3">
-		<h2 class="text-xl text-primary underline">
+		<h2 class="text-xl text-secondary font-semibold">
 			Senior Software Engineer - Application #1282
 		</h2>
 		<div class="flex items-center gap-10 justify-center">
@@ -24,14 +24,14 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 		</div>
 		<div class="shadow-md bg-white px-3 py-2 rounded-lg">
 			<div class="text-lg">
-				<div class="badge text-white badge-primary">
+				<div class="text-secondary text-[17px] font-semibold">
 					Successful applicant characteristics
 				</div>
 			</div>
-			<div class="my-3 flex flex-row justify-center">
-				<div class="grid py-3 grid-cols-2 gap-4">
+			<div class="my-2 flex flex-row justify-center">
+				<div class="grid py-1 grid-cols-2 gap-4">
 					<div>
-						<h3 class="text-secondary font-semibold">Top Skills</h3>
+						<h3 class="font-semibold badge badge-outline mb-1">Top Skills</h3>
 						<ul class="px-3">
 							<li>- C#</li>
 							<li>- relational databases</li>
@@ -39,7 +39,9 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 						</ul>
 					</div>
 					<div class="">
-						<h4 class="text-secondary font-semibold">Highest Education</h4>
+						<h3 class="font-semibold badge badge-outline mb-1">
+							Highest Education
+						</h3>
 						<div class="flex flex-row justify-start items-center gap-2">
 							<div class="radial-progress text-success" style="--value:70;">
 								70%
@@ -48,14 +50,18 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 						</div>
 					</div>
 					<div>
-						<h4 class="text-secondary font-semibold">Years Of Experience</h4>
+						<h3 class="font-semibold badge badge-outline mb-1">
+							Years of experience
+						</h3>
 						<ProgressBar label="2" value="30" type="success" />
 						<ProgressBar label="3" value="40" type="success" />
 						<ProgressBar label="4" value="60" type="success" />
 						<ProgressBar label="5+" value="50" type="success" />
 					</div>
 					<div>
-						<h4 class="text-secondary font-semibold">Prior position</h4>
+						<h3 class="font-semibold badge badge-outline mb-1">
+							Prior position
+						</h3>
 						<ProgressBar label="Junior Developer" value="25" type="success" />
 						<ProgressBar label="Software Engineer" value="45" type="success" />
 						<ProgressBar label="Senior Developer" value="70" type="success" />
@@ -64,18 +70,22 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 			</div>
 		</div>
 		<div class="mt-2 py-3 px-3 bg-base-200 shadow-md rounded-lg">
-			<div class="badge badge-outline">
+			<div class="text-secondary text-[17px] font-semibold">
 				Potential for improvement in your application
 			</div>
 			<div class="px-1 my-1">
 				<div>
-					<span class="underline text-primary">Grammar and Spelling</span>
+					<h3 class="font-semibold badge badge-accent mb-1 text-base-100">
+						Grammar and spelling
+					</h3>
 					<p class="italic">
 						There were some grammatical errors in your letter of application
 					</p>
 				</div>
 				<div class="py-1">
-					<span class="underline text-primary">Missing skills</span>
+					<h3 class="font-semibold badge badge-accent mb-1 text-base-100">
+						Missing skills
+					</h3>
 					<ul class="list-disc px-5">
 						<li>Docker</li>
 						<li>NoSql Databases</li>
@@ -83,7 +93,9 @@ import ApplicantLayout from "../../layouts/ApplicantLayout.astro";
 					</ul>
 				</div>
 				<div>
-					<span class="underline text-primary">Years of experience</span>
+					<h3 class="font-semibold badge badge-accent mb-1 text-base-100">
+						Years of experience
+					</h3>
 					<p class="italic">
 						We noticed that you do not have the minimum years of experience
 						required for the open position.
