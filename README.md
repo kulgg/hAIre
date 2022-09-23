@@ -1,3 +1,3 @@
 # hAIre!
 
-Mock interface of a XAI hiring decision support system
+Mock interface of an explainable AI hiring decision support system
