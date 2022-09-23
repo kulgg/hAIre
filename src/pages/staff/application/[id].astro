@@ -89,26 +89,80 @@ const totalScorePercentage = totalScore * 100;
 			</div>
 			<div class="divider"></div>
 			<div>
-				<h2 class="text-xl">Content</h2>
-				<SentenceList sentences={skills} title="Skills" />
-				<SentenceList sentences={education} title="Education" />
-				<SentenceList sentences={pastWork} title="Past Work" />
+				<div class="flex justify-between items-center">
+					<h2 class="text-xl">Content</h2>
+					<label for="my-modal-4" class="modal-button">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 cursor-pointer"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+							></path>
+						</svg>
+					</label>
+				</div>
+				<input type="checkbox" id="my-modal-4" class="modal-toggle" />
+				<label for="my-modal-4" class="modal cursor-pointer">
+					<label class="modal-box relative" for="">
+						<h3 class="text-lg font-bold">Application Content</h3>
+						<p class="py-4">
+							Looking for work CV, cover letter and some practical suggestions
+							Dr. Daniel Valtakari Introduction As part of my daily job I have
+							encountered numerous individuals from different parts of the
+							world. One thing they all had in common was the need to find a
+							job. These days, that can be a challenge for anyone, let alone for
+							somebody coming from a different country and with a different
+							cultural background. Now I am sharing my experience with some
+							ideas and suggestions I have collected along the way. I don't
+							claim to have the best ideas, but I have received feedback from
+							many of the people participating and discussing with me on how to
+							find an open position and how to get the job. I hope this will
+							help you as well. ... and if you feel you have some better ideas,
+							don't be shy, share them. There are a lot of people everywhere who
+							would appreciate further ideas and guidance. No guide and no
+							advice will create more jobs. However, you should be better
+							prepared than the competition. It's like a race and you are
+							competing with others, not knowing their numbers nor skills. Show
+							the future employer that you can offer more, and that you are
+							better fit for the position at hand. If possible, even show that
+							you can offer more than they bargained for. Most of all, trust
+							yourself and your skills. You are good and you are motivated. And
+							reading this guide should prove to you that you really want to
+							find that job that is maybe at this very moment waiting for you.
+							Go and grab it! Dr. Daniel Valtakari, PhD (Chem. Eng.) Turku,
+							Finland June 2020 1 st Edition I wish to thank my daughter
+							Isabelle Valtakari for her contribution, suggestions and proof
+							reading. Thank you!
+						</p>
+					</label>
+				</label>
 			</div>
-			<div class="divider"></div>
-			<div class="card w-full bg-base-100 self-center shadow-xl">
-				<div class="card-body">
-					<h2 class="card-title">Likely a good hire</h2>
-					<span class=""
-						>{totalScorePercentage.toFixed(0)}% overall applicant score</span
-					>
-					<progress
-						class="progress progress-info w-full"
-						value={totalScorePercentage}
-						max="100"></progress>
-					<div class="card-actions justify-center gap-24 px-10 mt-5">
-						<a class="btn btn-success" href="/staff/success">Accept</a>
-						<a class="btn" href="/staff/success">Reject</a>
-					</div>
+
+			<SentenceList sentences={skills} title="Skills" />
+			<SentenceList sentences={education} title="Education" />
+			<SentenceList sentences={pastWork} title="Past Work" />
+		</div>
+		<div class="divider"></div>
+		<div class="card w-full bg-base-100 self-center shadow-xl">
+			<div class="card-body">
+				<h2 class="card-title">Likely a good hire</h2>
+				<span class=""
+					>{totalScorePercentage.toFixed(0)}% overall applicant score</span
+				>
+				<progress
+					class="progress progress-info w-full"
+					value={totalScorePercentage}
+					max="100"></progress>
+				<div class="card-actions justify-center gap-24 px-10 mt-5">
+					<a class="btn btn-success" href="/staff/success">Accept</a>
+					<a class="btn" href="/staff/success">Reject</a>
 				</div>
 			</div>
 		</div>
