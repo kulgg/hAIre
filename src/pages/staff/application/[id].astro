@@ -16,6 +16,9 @@ export async function getStaticPaths() {
 		props: { application },
 	}));
 }
+
+const grammarScore = application.data.grammarScore;
+const grammarScorePercentage = grammarScore * 100;
 ---
 
 <AuthedLayout stakeholder="Staff">
@@ -26,13 +29,13 @@ export async function getStaticPaths() {
 			<div class="flex items-center gap-5">
 				<progress
 					class={`progress ${
-						application.data.grammarScore < 60
+						grammarScorePercentage < 60
 							? "progress-warning"
 							: "progress-success"
 					}`}
-					value={application.data.grammarScore}
+					value={grammarScorePercentage}
 					max="100"></progress>
-				<div>{application.data.grammarScore}%</div>
+				<div>{grammarScorePercentage}%</div>
 			</div>
 			<div class="divider"></div>
 			<div><h2 class="text-lg">Content</h2></div>

@@ -1,12 +1,27 @@
-export interface ApplicationData {
-	grammarScore: number;
+export interface ScoredSentence {
+	text: string;
+	score: number;
+	missing: boolean;
 }
 
 export interface Application {
 	id: string;
 	position: string;
 	positionId: string;
-	data: ApplicationData;
+	data: {
+		grammarScore: number;
+		content: {
+			skills: {
+				sentences: ScoredSentence[];
+			};
+			education: {
+				sentences: ScoredSentence[];
+			};
+			pastWork: {
+				sentences: ScoredSentence[];
+			};
+		};
+	};
 }
 
 const applications: Application[] = [
@@ -15,7 +30,41 @@ const applications: Application[] = [
 		position: "Junior Software Engineer",
 		positionId: "12",
 		data: {
-			grammarScore: 80,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 	{
@@ -23,7 +72,41 @@ const applications: Application[] = [
 		position: "Junior Software Engineer",
 		positionId: "23",
 		data: {
-			grammarScore: 50,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 	{
@@ -31,7 +114,41 @@ const applications: Application[] = [
 		position: "Human Resources",
 		positionId: "22",
 		data: {
-			grammarScore: 30,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 	{
@@ -39,7 +156,41 @@ const applications: Application[] = [
 		position: "Machine Learning Engineer",
 		positionId: "31",
 		data: {
-			grammarScore: 90,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 	{
@@ -47,7 +198,41 @@ const applications: Application[] = [
 		position: "Machine Learning Engineer",
 		positionId: "31",
 		data: {
-			grammarScore: 60,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 	{
@@ -55,7 +240,41 @@ const applications: Application[] = [
 		position: "Senior Software Engineer",
 		positionId: "93",
 		data: {
-			grammarScore: 70,
+			grammarScore: 0.8,
+			content: {
+				skills: {
+					sentences: [
+						{
+							text: "five years of experience with Javascript",
+							score: 0.8,
+							missing: false,
+						},
+						{
+							text: "Docker",
+							score: 0.6,
+							missing: true,
+						},
+					],
+				},
+				education: {
+					sentences: [
+						{
+							text: "studied computer science at MIT",
+							score: 0.9,
+							missing: false,
+						},
+					],
+				},
+				pastWork: {
+					sentences: [
+						{
+							text: "built software that crawls job posting sites",
+							score: 0.6,
+							missing: false,
+						},
+					],
+				},
+			},
 		},
 	},
 ];
