@@ -69,6 +69,16 @@ const totalScore =
 		pastWork.negativeSentences.length);
 
 const totalScorePercentage = totalScore * 100;
+
+let recommendationText = "";
+
+if (totalScore >= 0.75) {
+	recommendationText = "Likely a very good hire";
+} else if (totalScore >= 0.5) {
+	recommendationText = "Likely a good hire";
+} else {
+	recommendationText = "Likely not a good hire";
+}
 ---
 
 <AuthedLayout stakeholder="Staff">
@@ -152,7 +162,7 @@ const totalScorePercentage = totalScore * 100;
 		<div class="divider"></div>
 		<div class="card w-full bg-base-100 self-center shadow-xl">
 			<div class="card-body">
-				<h2 class="card-title">Likely a good hire</h2>
+				<h2 class="card-title">{recommendationText}</h2>
 				<span class=""
 					>{totalScorePercentage.toFixed(0)}% overall applicant score</span
 				>
@@ -161,8 +171,14 @@ const totalScorePercentage = totalScore * 100;
 					value={totalScorePercentage}
 					max="100"></progress>
 				<div class="card-actions justify-center gap-24 px-10 mt-5">
-					<a class="btn btn-success" href="/staff/success">Accept</a>
-					<a class="btn" href="/staff/success">Reject</a>
+					<a
+						class={`btn ${totalScore < 0.5 ? "" : "btn-success"}`}
+						href="/staff/success">Accept</a
+					>
+					<a
+						class={`btn ${totalScore < 0.5 ? "btn-success" : ""}`}
+						href="/staff/success">Reject</a
+					>
 				</div>
 			</div>
 		</div>
