@@ -1,9 +1,6 @@
 ---
 import SentenceList from "../../../components/SentenceList.astro";
-import applications, {
-	Application,
-	ScoredSentence,
-} from "../../../data/applications";
+import applications, { Application } from "../../../data/applications";
 import AuthedLayout from "../../../layouts/AuthedLayout.astro";
 
 const { id } = Astro.params;
@@ -26,52 +23,10 @@ const grammarScorePercentage = grammarScore * 100;
 
 const { skills, education, pastWork } = application.data.content;
 
-const accumulatorFunction = (
-	acc: number,
-	curr: ScoredSentence,
-	negative: boolean
-): number => {
-	return acc + (negative ? 0.5 - curr.score : 0.5 + curr.score);
-};
-
-const totalScore =
-	(grammarScore +
-		skills.positiveSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, false),
-			0
-		) +
-		skills.negativeSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, true),
-			0
-		) +
-		education.positiveSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, false),
-			0
-		) +
-		education.negativeSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, true),
-			0
-		) +
-		pastWork.positiveSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, false),
-			0
-		) +
-		pastWork.negativeSentences.reduce(
-			(acc, curr) => accumulatorFunction(acc, curr, true),
-			0
-		)) /
-	(1 +
-		skills.positiveSentences.length +
-		skills.negativeSentences.length +
-		education.positiveSentences.length +
-		education.negativeSentences.length +
-		pastWork.positiveSentences.length +
-		pastWork.negativeSentences.length);
-
+const totalScore = application.data.overallScore;
 const totalScorePercentage = totalScore * 100;
 
 let recommendationText = "";
-
 if (totalScore >= 0.75) {
 	recommendationText = "Likely a very good hire";
 } else if (totalScore >= 0.5) {
@@ -83,7 +38,9 @@ if (totalScore >= 0.75) {
 
 <AuthedLayout stakeholder="Staff">
 	<div class="mx-10">
-		<h2 class="text-xl mt-5 text-primary font-semibold">Application #{id}</h2>
+		<h2 class="text-xl mt-5 text-primary font-semibold">
+			{application.position} Application #{id}
+		</h2>
 		<div class="flex flex-col w-full py-4">
 			<div class="text-xl">Grammar and spelling</div>
 			<div class="flex items-center gap-5">
@@ -122,41 +79,50 @@ if (totalScore >= 0.75) {
 				<label for="my-modal-4" class="modal cursor-pointer">
 					<label class="modal-box relative" for="">
 						<h3 class="text-lg font-bold">Application Content</h3>
-						<p class="py-4">
-							Looking for work CV, cover letter and some practical suggestions
-							Dr. Daniel Valtakari Introduction As part of my daily job I have
-							encountered numerous individuals from different parts of the
-							world. One thing they all had in common was the need to find a
-							job. These days, that can be a challenge for anyone, let alone for
-							somebody coming from a different country and with a different
-							cultural background. Now I am sharing my experience with some
-							ideas and suggestions I have collected along the way. I don't
-							claim to have the best ideas, but I have received feedback from
-							many of the people participating and discussing with me on how to
-							find an open position and how to get the job. I hope this will
-							help you as well. ... and if you feel you have some better ideas,
-							don't be shy, share them. There are a lot of people everywhere who
-							would appreciate further ideas and guidance. No guide and no
-							advice will create more jobs. However, you should be better
-							prepared than the competition. It's like a race and you are
-							competing with others, not knowing their numbers nor skills. Show
-							the future employer that you can offer more, and that you are
-							better fit for the position at hand. If possible, even show that
-							you can offer more than they bargained for. Most of all, trust
-							yourself and your skills. You are good and you are motivated. And
-							reading this guide should prove to you that you really want to
-							find that job that is maybe at this very moment waiting for you.
-							Go and grab it! Dr. Daniel Valtakari, PhD (Chem. Eng.) Turku,
-							Finland June 2020 1 st Edition I wish to thank my daughter
-							Isabelle Valtakari for her contribution, suggestions and proof
-							reading. Thank you!
+						<p>
+							<strong>Pellentesque habitant morbi tristique</strong> senectus et
+							netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+							feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+							sit amet quam egestas semper. <em
+								>Aenean ultricies mi vitae est.</em
+							> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+							pharetra. Vestibulum erat wisi, condimentum sed, <code
+								>commodo vitae</code
+							>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
+							condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac
+							dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut
+							felis.
 						</p>
+
+						<h2>Header Level 2</h2>
+
+						<ol>
+							<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+							<li>Aliquam tincidunt mauris eu risus.</li>
+						</ol>
+
+						<blockquote>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+								magna. Cras in mi at felis aliquet congue. Ut a est eget ligula
+								molestie gravida. Curabitur massa. Donec eleifend, libero at
+								sagittis mollis, tellus est malesuada tellus, at luctus turpis
+								elit sit amet quam. Vivamus pretium ornare est.
+							</p>
+						</blockquote>
+
+						<h3>Header Level 3</h3>
+
+						<ul>
+							<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+							<li>Aliquam tincidunt mauris eu risus.</li>
+						</ul>
 					</label>
 				</label>
 			</div>
 
 			<SentenceList sentences={skills} title="Skills" />
-			<SentenceList sentences={education} title="Education" />
+			<SentenceList sentences={education} title="Education & Achievements" />
 			<SentenceList sentences={pastWork} title="Past Work" />
 		</div>
 		<div class="divider"></div>
@@ -172,9 +138,7 @@ if (totalScore >= 0.75) {
 					max="100"></progress>
 				<div class="card-actions justify-center gap-24 px-10 mt-5">
 					<a
-						class={`btn text-white ${
-							totalScore < 0.5 ? "btn-outline" : "btn-primary"
-						}`}
+						class={`btn ${totalScore < 0.5 ? "btn-outline" : "btn-primary"}`}
 						href="/staff/success">Accept</a
 					>
 					<a
