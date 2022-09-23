@@ -1,5 +1,11 @@
 ---
 import Header from "./Header.astro";
+
+export interface Props {
+	link: string;
+}
+
+const { link } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -12,7 +18,7 @@ import Header from "./Header.astro";
 		<title>hAIre!</title>
 	</head>
 	<body class="flex flex-col h-full w-full container absolute inset-0">
-		<Header>
+		<Header link={link}>
 			<slot name="menu-items" />
 		</Header>
 		<div class="mb-auto">

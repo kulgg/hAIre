@@ -7,9 +7,10 @@ export interface Props {
 }
 
 const { stakeholder } = Astro.props;
+const lowerCaseStakeholder = stakeholder.toLocaleLowerCase();
 ---
 
-<Layout>
+<Layout link={`/${lowerCaseStakeholder}`}>
 	<MenuItems stakeholder={stakeholder} slot="menu-items" />
 	<slot />
 </Layout>

@@ -1,6 +1,14 @@
+---
+export interface Props {
+	link: string;
+}
+
+const { link } = Astro.props;
+---
+
 <div class="navbar shadow-md sticky top-0 z-50 bg-base-200">
 	<div class="flex-1">
-		<a class="btn btn-ghost normal-case text-xl" href="/">hAIre!</a>
+		<a class="btn btn-ghost normal-case text-xl" href={link}>hAIre!</a>
 	</div>
 	<slot />
 </div>
