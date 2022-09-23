@@ -19,6 +19,33 @@ export async function getStaticPaths() {
 
 const grammarScore = application.data.grammarScore;
 const grammarScorePercentage = grammarScore * 100;
+
+const { skills, education, pastWork } = application.data.content;
+
+console.log(skills);
+console.log(education);
+console.log(pastWork);
+
+const totalScore =
+	(grammarScore +
+		skills.sentences.reduce(
+			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+			0
+		) +
+		education.sentences.reduce(
+			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+			0
+		) +
+		pastWork.sentences.reduce(
+			(acc, curr) => acc + (curr.missing ? curr.score : 0.5 + curr.score),
+			0
+		)) /
+	(1 +
+		skills.sentences.length +
+		education.sentences.length +
+		pastWork.sentences.length);
+
+const totalScorePercentage = totalScore * 100;
 ---
 
 <AuthedLayout stakeholder="Staff">
@@ -38,14 +65,21 @@ const grammarScorePercentage = grammarScore * 100;
 				<div>{grammarScorePercentage}%</div>
 			</div>
 			<div class="divider"></div>
-			<div><h2 class="text-lg">Content</h2></div>
+			<div>
+				<h2 class="text-lg">Content</h2>
+				<div>Skills</div>
+			</div>
 			<div class="divider"></div>
 			<div class="card w-96 bg-base-100 self-center shadow-xl">
 				<div class="card-body">
 					<h2 class="card-title">Likely a good hire</h2>
-					<span class="">70% overall applicant score</span>
-					<progress class="progress progress-info w-full" value="70" max="100"
-					></progress>
+					<span class=""
+						>{totalScorePercentage.toFixed(0)}% overall applicant score</span
+					>
+					<progress
+						class="progress progress-info w-full"
+						value={totalScorePercentage}
+						max="100"></progress>
 					<div class="card-actions justify-between px-10 mt-5">
 						<a class="btn btn-success" href="/staff/success">Accept</a>
 						<a class="btn" href="/staff/success">Reject</a>
