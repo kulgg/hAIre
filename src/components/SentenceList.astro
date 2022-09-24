@@ -13,7 +13,7 @@ const { title, sentences } = Astro.props;
 ---
 
 <div class="badge badge-secondary text-base-100 mt-2">{title}</div>
-<ul class="gap-1 grid grid-cols-2 grid-flow-row-dense">
+<ul class="gap-1 grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense">
 	{
 		sentences.positiveSentences.map((x) => (
 			<li
@@ -44,7 +44,7 @@ const { title, sentences } = Astro.props;
 	{
 		sentences.negativeSentences.map((x) => (
 			<li
-				class={`flex justify-start items-center gap-1 text-sm col-start-2 col-span-1`}
+				class={`flex justify-start items-center gap-1 text-sm md:col-start-2 col-span-1`}
 			>
 				<div class="text-base">• {x.text}</div>
 				<svg
